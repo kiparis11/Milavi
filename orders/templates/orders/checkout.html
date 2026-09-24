@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Оформление заказа — Milavi
+{% endblock %}
+
+{% block content %}
+
+<section class="checkout">
+    <div class="checkout__container">
+
+        <a href="{% url 'cart_detail' %}" class="checkout__back">
+            ← Вернуться в корзину
+        </a>
+
+        <div class="checkout__heading">
+            <p class="checkout__eyebrow">ВАШ ЗАКАЗ ♡</p>
+            <h1>Оформление заказа</h1>
+            <p>Осталось совсем немного до вашего любимого кофе.</p>
+        </div>
+
+        <div class="checkout__layout">
+
+            <!-- Данные покупателя -->
+
+            <div class="checkout__card">
+
+                <h2>Данные для доставки</h2>
+
+                {% if error %}
+                    <div class="checkout__error">
+                        {{ error }}
+                    </div>
+                {% endif %}
+
+                {{ form.non_field_errors }}
+
+                <form method="post" class="checkout__form">
+                    {% csrf_token %}
+
+                    <div class="checkout__field">
+                        <label for="{{ form.full_name.id_for_label }}">
+                            Имя получателя
+                        </label>
+                        {{ form.full_name }}
+                        {{ form.full_name.errors }}
+                    </div>
+
+                    <div class="checkout__field">
+                        <label for="{{ form.phone.id_for_label }}">
+                            Номер телефона
+                        </label>
+                        {{ form.phone }}
+                        {{ form.phone.errors }}
+                    </div>
+
+                    <div class="checkout__field">
+                        <label for="{{ form.address.id_for_label }}">
+                            Адрес доставки
+                        </label>
+                        {{ form.address }}
+                        {{ form.address.errors }}
+                    </div>
+
+                    <div class="checkout__field">
+                        <label for="{{ form.comment.id_for_label }}">
+                            Комментарий к заказу
+                        </label>
+                        {{ form.comment }}
+                        {{ form.comment.errors }}
+                    </div>
+
+                    <div class="checkout__payment">
+                        <h3>Способ оплаты</h3>
+
+                        <div class="checkout__payment-options">
+
+                            {% for radio in form.payment_method %}
+
+                                <label class="checkout__payment-option">
+                                    {{ radio.tag }}
+
+                                    <span>
+                                        {{ radio.choice_label }}
+                                    </span>
+                                </label>
+
+                            {% endfor %}
+
+                        </div>
+
+                        {{ form.payment_method.errors }}
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="button button--primary checkout__submit"
+                        {% if error %}disabled{% endif %}
+                    >
+                        Подтвердить заказ →
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- Состав заказа -->
+
+            <aside class="checkout__card checkout__summary">
+
+                <h2>Ваш заказ</h2>
+
+                {% for item in cart_items %}
+
+                    <div class="checkout__item">
+
+                        <div class="checkout__item-info">
+
+                            <strong>
+                                {{ item.product.name }}
+                            </strong>
+
+                            <p>
+                                Количество: {{ item.quantity }}
+                            </p>
+
+                            {% if item.size %}
+                                <p>
+                                    Размер: {{ item.size.size }}
+                                </p>
+                            {% endif %}
+
+                            {% if item.temperature %}
+                                <p>
+                                    {{ item.get_temperature_display }}
+                                </p>
+                            {% endif %}
+
+                            {% for addon in item.addons.all %}
+                                <p>+ {{ addon.name }}</p>
+                            {% endfor %}
+
+                        </div>
+
+                        <strong class="checkout__item-price">
+                            {{ item.total_price|floatformat:0 }} сум
+                        </strong>
+
+                    </div>
+
+                {% endfor %}
+
+                <div class="checkout__total">
+
+                    <span>Итого</span>
+
+                    <strong>
+                        {{ cart_total|floatformat:0 }} сум
+                    </strong>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

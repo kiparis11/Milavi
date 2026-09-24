@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Меню — Milavi
+{% endblock %}
+
+
+{% block content %}
+
+<section class="catalog{% if search_query %} catalog--search-results{% endif %}">
+
+    <div class="catalog__container">
+
+        <div class="catalog__header">
+
+            {% if search_query %}
+
+                <p class="catalog__eyebrow">
+                    ПОИСК ПО МЕНЮ ♡
+                </p>
+
+                <h1 class="catalog__title">
+                    Результаты поиска
+                </h1>
+
+                <p class="catalog__description">
+                    По запросу «{{ search_query }}»
+                </p>
+
+            {% else %}
+
+                <p class="catalog__eyebrow">
+                    COFFEE & BAKERY
+                </p>
+
+                <h1 class="catalog__title">
+                    Наше меню
+                </h1>
+
+                <p class="catalog__description">
+                    Кофе, нежные напитки и десерты,
+                    созданные для маленьких приятных моментов.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="catalog__layout">
+
+            <!-- ЛЕВАЯ ПАНЕЛЬ -->
+            <aside class="catalog__sidebar">
+
+                <!-- СОРТИРОВКА -->
+                <div class="catalog__sidebar-section">
+
+                    <p class="catalog__sidebar-title">
+                        Сортировка
+                    </p>
+
+                    <form method="get" class="catalog-sort">
+                        {% if show_new %}
+                            <input type="hidden" name="new" value="1">
+                        {% endif %}
+
+                        {% if selected_category %}
+                            <input
+                                type="hidden"
+                                name="category"
+                                value="{{ selected_category }}"
+                            >
+                        {% endif %}
+
+                        {% if search_query %}
+                            <input
+                                type="hidden"
+                                name="search"
+                                value="{{ search_query }}"
+                            >
+                        {% endif %}
+
+                        <select
+                            name="sort"
+                            onchange="this.form.submit()"
+                        >
+                            <option value="" {% if not selected_sort %}selected{% endif %}>
+                                По умолчанию
+                            </option>
+
+                            <option value="price_asc" {% if selected_sort == 'price_asc' %}selected{% endif %}>
+                                Сначала дешевле
+                            </option>
+
+                            <option value="price_desc" {% if selected_sort == 'price_desc' %}selected{% endif %}>
+                                Сначала дороже
+                            </option>
+
+                            <option value="name" {% if selected_sort == 'name' %}selected{% endif %}>
+                                По названию
+                            </option>
+
+                        </select>
+
+                    </form>
+
+                </div>
+
+
+                <!-- КАТЕГОРИИ -->
+                <div class="catalog__sidebar-section">
+
+                    <p class="catalog__sidebar-title">
+                        Категории
+                    </p>
+
+                    <div class="catalog__categories">
+
+                        <a
+                            href="{% url 'catalog' %}"
+                            class="catalog__category
+                            {% if not selected_category %}catalog__category--active{% endif %}"
+                        >
+                            Всё
+                        </a>
+
+                        {% for category in categories %}
+
+                            <a
+                                href="{% url 'catalog' %}?category={{ category.slug }}"
+                                class="catalog__category
+                                {% if selected_category == category.slug %}catalog__category--active{% endif %}"
+                            >
+                                {{ category.name }}
+                            </a>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+            <!-- ТОВАРЫ СПРАВА -->
+            <div class="catalog__main">
+
+                {% if show_new %}
+
+                    <div class="catalog-new-banner">
+
+                        <p class="catalog-new-banner__eyebrow">
+                            НОВОЕ В MILAVI ♡
+                        </p>
+
+                        <h2>
+                            Новинки
+                        </h2>
+
+                        <p>
+                            Самые свежие позиции нашего меню.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+                <div class="catalog__grid">
+
+                    {% for product in products %}
+
+                        <article class="product-card">
+
+                            <div class="product-card__image">
+
+                                {% if product.image %}
+
+                                    <a href="{% url 'product_detail' product.slug %}">
+
+                                        <img
+                                            src="{{ product.image.url }}"
+                                            alt="{{ product.name }}"
+                                        >
+
+                                    </a>
+
+                                {% endif %}
+
+                                <form
+                                    method="post"
+                                    action="{% url 'toggle_favorite' product.id %}"
+                                >
+                                    {% csrf_token %}
+
+                                    <input
+                                        type="hidden"
+                                        name="next"
+                                        value="{{ request.get_full_path }}"
+                                    >
+
+                                    <button
+                                        class="product-card__favorite
+                                        {% if product.id in favorite_product_ids %}product-card__favorite--active{% endif %}"
+                                        type="submit"
+                                        aria-label="Избранное"
+                                    >
+                                        {% if product.id in favorite_product_ids %}
+                                            ♥
+                                        {% else %}
+                                            ♡
+                                        {% endif %}
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+
+                            <div class="product-card__content">
+
+                                <p class="product-card__category">
+                                    {{ product.category.name }}
+                                </p>
+
+                                <h2 class="product-card__name">
+
+                                    <a href="{% url 'product_detail' product.slug %}">
+                                        {{ product.name }}
+                                    </a>
+
+                                </h2>
+
+                                <div class="product-card__bottom">
+
+                                    <span class="product-card__price">
+                                        {{ product.price|floatformat:0 }} сум
+                                    </span>
+
+                                    <a
+                                        href="{% url 'product_detail' product.slug %}"
+                                        class="product-card__add"
+                                        aria-label="Выбрать параметры товара"
+                                        title="Выбрать параметры товара"
+                                    >
+                                        +
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    {% empty %}
+
+                        <div class="catalog__empty">
+                            Товары не найдены.
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

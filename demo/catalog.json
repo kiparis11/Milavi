@@ -1,0 +1,1356 @@
+[
+{
+  "model": "shop.category",
+  "pk": 1,
+  "fields": {
+    "name": "Холодные напитки",
+    "slug": "holodnye-napitki"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 2,
+  "fields": {
+    "name": "Кофе",
+    "slug": "kofe"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 3,
+  "fields": {
+    "name": "Десерты",
+    "slug": "deserty"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 4,
+  "fields": {
+    "name": "Чай",
+    "slug": "chaj"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 5,
+  "fields": {
+    "name": "Выпечка",
+    "slug": "vypechka"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 1,
+  "fields": {
+    "category": 1,
+    "name": "Клубничный кофе bubble",
+    "slug": "klubnichnyj-coffee-bubble",
+    "description": "Холодный сливочный кофе с клубничным вкусом и шариками тапиоки.",
+    "price": "48000.00",
+    "image": "products/bubble_coffee.png",
+    "is_available": true,
+    "is_featured": true,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": false,
+    "has_addons": true,
+    "created_at": "2026-09-20T16:30:33.969Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 2,
+  "fields": {
+    "category": 2,
+    "name": "Фисташковый раф",
+    "slug": "fistashkovyj-raf",
+    "description": "Нежный кофейный напиток со сливочной текстурой и мягким вкусом фисташки.",
+    "price": "42000.00",
+    "image": "products/phistashko_raff.jpg",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": true,
+    "has_addons": true,
+    "created_at": "2026-09-20T16:35:34.417Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 3,
+  "fields": {
+    "category": 1,
+    "name": "Матча анчан с малиной",
+    "slug": "matcha-anchan-s-malinoj",
+    "description": "Нежный напиток на основе анчана с молоком, малиновым пюре и льдом. Мягкий сливочный вкус с яркой ягодной ноткой.",
+    "price": "46000.00",
+    "image": "products/blue_matcha_rasberry.png",
+    "is_available": true,
+    "is_featured": true,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": false,
+    "has_addons": true,
+    "created_at": "2026-09-20T16:42:42.627Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 4,
+  "fields": {
+    "category": 3,
+    "name": "Баскский чизкейк",
+    "slug": "baskskij-chizkejk",
+    "description": "Кремовый чизкейк с карамелизированной корочкой и нежной серединой.",
+    "price": "40000.00",
+    "image": "products/bakski_cheesecake.webp",
+    "is_available": true,
+    "is_featured": true,
+    "is_new": false,
+    "has_sizes": false,
+    "has_temperature": false,
+    "has_addons": true,
+    "created_at": "2026-09-20T16:45:55.261Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 5,
+  "fields": {
+    "category": 2,
+    "name": "Капучино",
+    "slug": "kapuchino",
+    "description": "Эспрессо с горячим молоком и воздушной молочной пеной.",
+    "price": "30000.00",
+    "image": "products/capuchino.avif",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": true,
+    "has_addons": true,
+    "created_at": "2026-09-20T16:47:07.336Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 6,
+  "fields": {
+    "category": 2,
+    "name": "Карамельный латте",
+    "slug": "karamelnyj-latte",
+    "description": "Мягкий молочный кофе с нежной карамельной сладостью.",
+    "price": "32000.00",
+    "image": "products/caramel_latte.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": true,
+    "has_addons": true,
+    "created_at": "2026-09-20T16:49:14.219Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 7,
+  "fields": {
+    "category": 3,
+    "name": "Ягодный круассан",
+    "slug": "yagodnyj-kruassan",
+    "description": "Хрустящий круассан со сливочным кремом и свежими ягодами.",
+    "price": "35000.00",
+    "image": "products/berry_cruassan.jpg",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": false,
+    "has_temperature": false,
+    "has_addons": false,
+    "created_at": "2026-09-20T16:50:38.647Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 8,
+  "fields": {
+    "category": 4,
+    "name": "Персиковый айс-ти",
+    "slug": "persikovyj-ajs-ti",
+    "description": "Освежающий холодный чай с персиком и лёгкими фруктовыми нотами.",
+    "price": "25000.00",
+    "image": "products/peach_ice_tee.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": false,
+    "has_addons": false,
+    "created_at": "2026-09-20T16:53:46.967Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 9,
+  "fields": {
+    "category": 2,
+    "name": "Медовый капучино",
+    "slug": "medovyj-kapuchino",
+    "description": "Эспрессо с нежным молоком, воздушной пенкой и натуральным мёдом. Мягкий кофейный вкус с приятной медовой сладостью.",
+    "price": "33000.00",
+    "image": "products/honey-cappucino.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": true,
+    "has_addons": true,
+    "created_at": "2026-09-24T12:51:13.988Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 10,
+  "fields": {
+    "category": 2,
+    "name": "Пряный тыквенный латте",
+    "slug": "pryanyj-tykvennyj-latte",
+    "description": "Нежный латте с тыквенным сиропом, корицей и ароматными пряностями. Согревающий напиток с мягким осенним вкусом и шапочкой взбитых сливок.",
+    "price": "39000.00",
+    "image": "products/pumpkin-spice-latte.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": true,
+    "has_sizes": true,
+    "has_temperature": false,
+    "has_addons": true,
+    "created_at": "2026-09-24T12:54:36.970Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 11,
+  "fields": {
+    "category": 2,
+    "name": "Флэт-уайт",
+    "slug": "flet-uajt",
+    "description": "Двойной эспрессо с горячим молоком и тонким слоем бархатистой пенки. Насыщенный кофейный вкус с нежной текстурой.",
+    "price": "32000.00",
+    "image": "products/flat-white.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": false,
+    "has_addons": true,
+    "created_at": "2026-09-24T12:57:35.596Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 12,
+  "fields": {
+    "category": 2,
+    "name": "Эспрессо",
+    "slug": "espresso",
+    "description": "Классический крепкий кофе с насыщенным ароматом и плотной золотистой крема. Чистый и выразительный вкус свежемолотых зёрен.",
+    "price": "20000.00",
+    "image": "products/espresso.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": false,
+    "has_addons": false,
+    "created_at": "2026-09-24T13:01:26.421Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 13,
+  "fields": {
+    "category": 1,
+    "name": "Клубничная матча",
+    "slug": "klubnichnaya-matcha",
+    "description": "Японская матча с холодным молоком и натуральным клубничным пюре. Нежное сочетание травянистых и сладких ягодных ноток.",
+    "price": "42000.00",
+    "image": "products/strawberry-matcha.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": true,
+    "has_sizes": true,
+    "has_temperature": false,
+    "has_addons": true,
+    "created_at": "2026-09-24T13:03:39.224Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 14,
+  "fields": {
+    "category": 1,
+    "name": "Лимонад ягодный",
+    "slug": "limonad-yagodnyj",
+    "description": "Освежающий газированный лимонад с малиной, клубникой и лимоном. Яркий ягодный вкус с приятной кислинкой.",
+    "price": "29000.00",
+    "image": "products/berry-lemonade.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": false,
+    "has_addons": true,
+    "created_at": "2026-09-24T13:05:07.368Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 15,
+  "fields": {
+    "category": 1,
+    "name": "Вишнёвый колд-брю",
+    "slug": "vishnyovyj-kold-bryu",
+    "description": "Кофе холодной экстракции с вишнёвым сиропом и кубиками льда. Глубокий кофейный вкус с сочной ягодной кислинкой.",
+    "price": "36000.00",
+    "image": "products/cherry-cold-brew.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": true,
+    "has_sizes": true,
+    "has_temperature": false,
+    "has_addons": true,
+    "created_at": "2026-09-24T13:07:44.090Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 16,
+  "fields": {
+    "category": 1,
+    "name": "Голубая лагуна",
+    "slug": "golubaya-laguna",
+    "description": "Безалкогольный лимонад с ярким цитрусовым вкусом и лёгкими сладкими нотками. Освежающий напиток нежно-голубого цвета.",
+    "price": "30000.00",
+    "image": "products/blue-lagoon.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": false,
+    "has_addons": true,
+    "created_at": "2026-09-24T13:14:13.839Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 17,
+  "fields": {
+    "category": 4,
+    "name": "Жасминовый чай",
+    "slug": "zhasminovyj-chaj",
+    "description": "Нежный зелёный чай с тонким цветочным ароматом жасмина. Лёгкий и освежающий вкус с приятным послевкусием.",
+    "price": "26000.00",
+    "image": "products/jasmine-tea.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": false,
+    "has_addons": true,
+    "created_at": "2026-09-24T13:16:14.401Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 18,
+  "fields": {
+    "category": 4,
+    "name": "Фруктовый чай",
+    "slug": "fruktovyj-chaj",
+    "description": "Ароматный чай с апельсином, клубникой и сочными ягодами. Насыщенный фруктовый вкус с мягкой натуральной сладостью.",
+    "price": "29000.00",
+    "image": "products/fruit-tea.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": false,
+    "has_addons": true,
+    "created_at": "2026-09-24T13:17:45.479Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 19,
+  "fields": {
+    "category": 4,
+    "name": "Груша и ромашка",
+    "slug": "grusha-i-romashka",
+    "description": "Нежный травяной чай с душистой ромашкой и спелой грушей. Мягкий цветочно-фруктовый вкус для уютного отдыха.",
+    "price": "28000.00",
+    "image": "products/pear-chamomile-tea.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": true,
+    "has_temperature": false,
+    "has_addons": true,
+    "created_at": "2026-09-24T13:18:51.873Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 20,
+  "fields": {
+    "category": 3,
+    "name": "Лимонная тарталетка",
+    "slug": "limonnaya-tartaletka",
+    "description": "Хрустящая песочная тарталетка с нежным лимонным кремом. Сбалансированное сочетание сладости и освежающей цитрусовой кислинки.",
+    "price": "35000.00",
+    "image": "products/lemon-tart.png",
+    "is_available": true,
+    "is_featured": true,
+    "is_new": true,
+    "has_sizes": false,
+    "has_temperature": false,
+    "has_addons": false,
+    "created_at": "2026-09-24T13:20:37.256Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 21,
+  "fields": {
+    "category": 3,
+    "name": "Павлова",
+    "slug": "pavlova",
+    "description": "Воздушная меренга с хрустящей корочкой, нежным сливочным кремом и свежими ягодами. Лёгкий десерт с приятной ягодной кислинкой.",
+    "price": "43000.00",
+    "image": "products/pavlova.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": false,
+    "has_temperature": false,
+    "has_addons": false,
+    "created_at": "2026-09-24T13:21:20.528Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 22,
+  "fields": {
+    "category": 3,
+    "name": "Тирамису",
+    "slug": "tiramisu",
+    "description": "Классический итальянский десерт с кремом из маскарпоне, пропитанным кофе бисквитом и тонким слоем какао.",
+    "price": "40000.00",
+    "image": "products/tiramisu.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": false,
+    "has_temperature": false,
+    "has_addons": false,
+    "created_at": "2026-09-24T13:22:05.558Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 23,
+  "fields": {
+    "category": 3,
+    "name": "Чёрный лес",
+    "slug": "chyornyj-les",
+    "description": "Шоколадный бисквит с сочной вишней и нежным сливочным кремом. Украшен шоколадной стружкой и вишней.",
+    "price": "43000.00",
+    "image": "products/black-forest-cake.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": false,
+    "has_temperature": false,
+    "has_addons": false,
+    "created_at": "2026-09-24T13:22:36.684Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 24,
+  "fields": {
+    "category": 5,
+    "name": "Синнабон",
+    "slug": "sinnabon",
+    "description": "Пышная булочка с ароматной корицей и нежной сливочной глазурью. Мягкая выпечка с насыщенным пряным вкусом",
+    "price": "30000.00",
+    "image": "products/cinnamon-roll.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": true,
+    "has_sizes": false,
+    "has_temperature": false,
+    "has_addons": false,
+    "created_at": "2026-09-24T13:23:30.156Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 25,
+  "fields": {
+    "category": 5,
+    "name": "Черничный маффин",
+    "slug": "chernichnyj-maffin",
+    "description": "Нежный ванильный маффин с сочной черникой. Мягкий, ароматный и слегка хрустящий сверху.",
+    "price": "27000.00",
+    "image": "products/blueberry-muffin.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": false,
+    "has_temperature": false,
+    "has_addons": false,
+    "created_at": "2026-09-24T13:23:54.715Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 26,
+  "fields": {
+    "category": 5,
+    "name": "Миндальный круассан",
+    "slug": "mindalnyj-kruassan",
+    "description": "Хрустящий слоёный круассан с нежным миндальным кремом. Украшен миндальными лепестками и сахарной пудрой",
+    "price": "35000.00",
+    "image": "products/almond-croissant.png",
+    "is_available": true,
+    "is_featured": false,
+    "is_new": false,
+    "has_sizes": false,
+    "has_temperature": false,
+    "has_addons": false,
+    "created_at": "2026-09-24T13:24:22.659Z"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 1,
+  "fields": {
+    "product": 2,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 2,
+  "fields": {
+    "product": 2,
+    "size": "M",
+    "extra_price": "6000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 3,
+  "fields": {
+    "product": 2,
+    "size": "L",
+    "extra_price": "10000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 4,
+  "fields": {
+    "product": 8,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 5,
+  "fields": {
+    "product": 8,
+    "size": "M",
+    "extra_price": "4000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 6,
+  "fields": {
+    "product": 8,
+    "size": "L",
+    "extra_price": "8000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 7,
+  "fields": {
+    "product": 6,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 8,
+  "fields": {
+    "product": 6,
+    "size": "M",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 9,
+  "fields": {
+    "product": 6,
+    "size": "L",
+    "extra_price": "10000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 10,
+  "fields": {
+    "product": 5,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 11,
+  "fields": {
+    "product": 5,
+    "size": "M",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 12,
+  "fields": {
+    "product": 5,
+    "size": "L",
+    "extra_price": "9999.99"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 13,
+  "fields": {
+    "product": 3,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 14,
+  "fields": {
+    "product": 3,
+    "size": "M",
+    "extra_price": "6000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 15,
+  "fields": {
+    "product": 3,
+    "size": "L",
+    "extra_price": "12000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 16,
+  "fields": {
+    "product": 1,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 17,
+  "fields": {
+    "product": 1,
+    "size": "M",
+    "extra_price": "6000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 18,
+  "fields": {
+    "product": 1,
+    "size": "L",
+    "extra_price": "11000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 19,
+  "fields": {
+    "product": 9,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 20,
+  "fields": {
+    "product": 9,
+    "size": "M",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 21,
+  "fields": {
+    "product": 9,
+    "size": "L",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 22,
+  "fields": {
+    "product": 10,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 23,
+  "fields": {
+    "product": 10,
+    "size": "M",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 24,
+  "fields": {
+    "product": 10,
+    "size": "L",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 25,
+  "fields": {
+    "product": 11,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 26,
+  "fields": {
+    "product": 11,
+    "size": "M",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 27,
+  "fields": {
+    "product": 11,
+    "size": "L",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 28,
+  "fields": {
+    "product": 12,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 29,
+  "fields": {
+    "product": 12,
+    "size": "L",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 30,
+  "fields": {
+    "product": 13,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 31,
+  "fields": {
+    "product": 13,
+    "size": "M",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 32,
+  "fields": {
+    "product": 13,
+    "size": "L",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 33,
+  "fields": {
+    "product": 14,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 34,
+  "fields": {
+    "product": 14,
+    "size": "M",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 35,
+  "fields": {
+    "product": 14,
+    "size": "L",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 36,
+  "fields": {
+    "product": 15,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 37,
+  "fields": {
+    "product": 15,
+    "size": "M",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 38,
+  "fields": {
+    "product": 15,
+    "size": "L",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 39,
+  "fields": {
+    "product": 16,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 40,
+  "fields": {
+    "product": 16,
+    "size": "M",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 41,
+  "fields": {
+    "product": 16,
+    "size": "L",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 42,
+  "fields": {
+    "product": 17,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 43,
+  "fields": {
+    "product": 17,
+    "size": "M",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 44,
+  "fields": {
+    "product": 17,
+    "size": "L",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 45,
+  "fields": {
+    "product": 18,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 46,
+  "fields": {
+    "product": 18,
+    "size": "M",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 47,
+  "fields": {
+    "product": 18,
+    "size": "L",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 48,
+  "fields": {
+    "product": 19,
+    "size": "S",
+    "extra_price": "0.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 49,
+  "fields": {
+    "product": 19,
+    "size": "M",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productsize",
+  "pk": 50,
+  "fields": {
+    "product": 19,
+    "size": "L",
+    "extra_price": "5000.00"
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 1,
+  "fields": {
+    "product": 5,
+    "name": "ванильный сироп",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 2,
+  "fields": {
+    "product": 5,
+    "name": "карамельный сироп",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 3,
+  "fields": {
+    "product": 5,
+    "name": "доп. эспрессо",
+    "extra_price": "6000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 4,
+  "fields": {
+    "product": 6,
+    "name": "ванильный сироп",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 5,
+  "fields": {
+    "product": 6,
+    "name": "доп. эспрессо",
+    "extra_price": "6000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 6,
+  "fields": {
+    "product": 2,
+    "name": "ванильный сироп",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 7,
+  "fields": {
+    "product": 2,
+    "name": "доп. эспрессо",
+    "extra_price": "6000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 8,
+  "fields": {
+    "product": 1,
+    "name": "доп. тапиока",
+    "extra_price": "5000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 9,
+  "fields": {
+    "product": 1,
+    "name": "клубничный соус",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 10,
+  "fields": {
+    "product": 1,
+    "name": "сливочная пенка",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 11,
+  "fields": {
+    "product": 3,
+    "name": "малиновый соус",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 12,
+  "fields": {
+    "product": 3,
+    "name": "сливочная пенка",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 13,
+  "fields": {
+    "product": 4,
+    "name": "ягодный соус",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 14,
+  "fields": {
+    "product": 4,
+    "name": "карамель",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 15,
+  "fields": {
+    "product": 4,
+    "name": "фисташковый крем",
+    "extra_price": "6000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 16,
+  "fields": {
+    "product": 9,
+    "name": "доп. эспрессо",
+    "extra_price": "6000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 17,
+  "fields": {
+    "product": 9,
+    "name": "доп. мёд",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 18,
+  "fields": {
+    "product": 9,
+    "name": "ванильный сироп",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 19,
+  "fields": {
+    "product": 10,
+    "name": "доп. эспрессо",
+    "extra_price": "6000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 20,
+  "fields": {
+    "product": 10,
+    "name": "корица",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 21,
+  "fields": {
+    "product": 10,
+    "name": "ванильный сироп",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 22,
+  "fields": {
+    "product": 11,
+    "name": "доп. эспрессо",
+    "extra_price": "6000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 23,
+  "fields": {
+    "product": 11,
+    "name": "карамельный сироп",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 24,
+  "fields": {
+    "product": 11,
+    "name": "ванильный сироп",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 25,
+  "fields": {
+    "product": 13,
+    "name": "доп. клубничное пюре",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 26,
+  "fields": {
+    "product": 14,
+    "name": "доп. ягодный сироп",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 27,
+  "fields": {
+    "product": 14,
+    "name": "лимон",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 28,
+  "fields": {
+    "product": 15,
+    "name": "доп. эспрессо",
+    "extra_price": "6000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 29,
+  "fields": {
+    "product": 15,
+    "name": "доп. вишневый сироп",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 30,
+  "fields": {
+    "product": 16,
+    "name": "доп. цитрусовый сироп",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 31,
+  "fields": {
+    "product": 16,
+    "name": "лимон",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 32,
+  "fields": {
+    "product": 17,
+    "name": "мед",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 33,
+  "fields": {
+    "product": 17,
+    "name": "лимон",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 34,
+  "fields": {
+    "product": 18,
+    "name": "мед",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 35,
+  "fields": {
+    "product": 18,
+    "name": "лимон",
+    "extra_price": "4000.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 36,
+  "fields": {
+    "product": 19,
+    "name": "мед",
+    "extra_price": "0.00",
+    "is_available": true
+  }
+},
+{
+  "model": "shop.productaddon",
+  "pk": 37,
+  "fields": {
+    "product": 19,
+    "name": "лимон",
+    "extra_price": "0.00",
+    "is_available": true
+  }
+}
+]

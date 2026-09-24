@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Оплата заказа — Milavi
+{% endblock %}
+
+{% block content %}
+
+<section class="demo-payment">
+
+    <div class="demo-payment__card">
+
+        <div class="demo-payment__top">
+
+            <span class="demo-payment__brand">
+                Milavi ♡
+            </span>
+
+        </div>
+
+        <p class="demo-payment__subtitle">
+            Оплата заказа №{{ order.id }}
+        </p>
+
+        <div class="demo-payment__visual">
+
+            <p>Банковская карта</p>
+
+            <div class="demo-payment__card-symbol">
+                ♡
+            </div>
+
+            <span>
+                MILAVI · COFFEE & BAKERY
+            </span>
+
+        </div>
+
+        <div class="demo-payment__amount">
+
+            <span>К оплате</span>
+
+            <strong>
+                {{ order.total_price|floatformat:0 }} сум
+            </strong>
+
+        </div>
+
+        {% if order.status == 'cancelled' %}
+
+            <div class="demo-payment__error">
+                Этот заказ отменён.
+                Его больше нельзя оплатить.
+            </div>
+
+            <a
+                href="{% url 'catalog' %}"
+                class="button button--secondary"
+            >
+                Вернуться в меню
+            </a>
+
+        {% else %}
+
+            {% if order.payment_status == 'failed' %}
+
+                <div class="demo-payment__error">
+
+                    <strong>Оплата не прошла</strong>
+
+                    <p>
+                        Не удалось завершить платёж.
+                        Ваш заказ сохранён, поэтому
+                        вы можете попробовать ещё раз.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+            <form
+                method="post"
+                action="{% url 'process_demo_payment' order.id %}"
+            >
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    name="result"
+                    value="success"
+                    class="button button--primary demo-payment__button"
+                >
+                    Оплатить
+                    {{ order.total_price|floatformat:0 }} сум
+                </button>
+
+            </form>
+
+            <details class="demo-payment__testing">
+
+                <summary>
+                    Проверка платёжных ошибок
+                </summary>
+
+                <form
+                    method="post"
+                    action="{% url 'process_demo_payment' order.id %}"
+                >
+                    {% csrf_token %}
+
+                    <button
+                        type="submit"
+                        name="result"
+                        value="failed"
+                        class="demo-payment__fail"
+                    >
+                        Проверить сценарий отказа
+                    </button>
+
+                </form>
+
+            </details>
+
+        {% endif %}
+
+        <p class="demo-payment__disclaimer">
+            Тестовая оплата · Средства не списываются
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

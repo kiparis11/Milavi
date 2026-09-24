@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Заказ оформлен — Milavi
+{% endblock %}
+
+{% block content %}
+
+<section class="order-success">
+
+    <div class="order-success__card">
+
+        <div class="order-success__heart">
+            ♡
+        </div>
+
+        <p class="order-success__eyebrow">
+            СПАСИБО, ЧТО ВЫБРАЛИ MILAVI
+        </p>
+
+        <h1>Заказ оформлен!</h1>
+
+        <p class="order-success__description">
+            Ваш заказ №{{ order.id }} успешно создан.
+        </p>
+
+        {% if order.payment_method == 'demo_card' %}
+
+            <div class="order-success__status">
+                ✓ Оплата прошла успешно
+            </div>
+
+        {% else %}
+
+            <div class="order-success__status">
+                Оплата при получении
+            </div>
+
+        {% endif %}
+
+        <div class="order-success__details">
+
+            <div class="order-success__detail">
+                <span>Номер заказа</span>
+                <strong>№{{ order.id }}</strong>
+            </div>
+
+            <div class="order-success__detail">
+                <span>Статус</span>
+                <strong>{{ order.get_status_display }}</strong>
+            </div>
+
+            <div class="order-success__detail">
+                <span>Способ оплаты</span>
+                <strong>
+                    {{ order.get_payment_method_display }}
+                </strong>
+            </div>
+
+            <div class="order-success__detail">
+                <span>Статус оплаты</span>
+                <strong>
+                    {{ order.get_payment_status_display }}
+                </strong>
+            </div>
+
+        </div>
+
+        <h2 class="order-success__items-title">
+            Ваш заказ
+        </h2>
+
+        <div class="order-success__items">
+
+            {% for item in order.items.all %}
+
+                <div class="order-success__item">
+
+                    <div>
+
+                        <strong>
+                            {{ item.product_name }}
+                        </strong>
+
+                        <p>Количество: {{ item.quantity }}</p>
+
+                        {% if item.size %}
+                            <p>Размер: {{ item.size }}</p>
+                        {% endif %}
+
+                        {% if item.temperature %}
+                            <p>{{ item.temperature }}</p>
+                        {% endif %}
+
+                        {% for addon in item.addons %}
+                            <p>+ {{ addon }}</p>
+                        {% endfor %}
+
+                    </div>
+
+                    <strong>
+                        {{ item.total_price|floatformat:0 }} сум
+                    </strong>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="order-success__total">
+
+            <span>Итого</span>
+
+            <strong>
+                {{ order.total_price|floatformat:0 }} сум
+            </strong>
+
+        </div>
+
+        <a
+            href="{% url 'catalog' %}"
+            class="button button--primary"
+        >
+            Вернуться в меню
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

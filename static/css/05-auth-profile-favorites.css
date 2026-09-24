@@ -1,0 +1,412 @@
+/* AUTH */
+
+.auth {
+    padding: 70px 0 100px;
+}
+
+
+.auth__container {
+    width: min(520px, 90%);
+    margin: 0 auto;
+}
+
+
+.auth__card {
+    padding: 42px;
+
+    border: 1px solid #F0DDE4;
+    border-radius: 30px;
+
+    background-color: var(--white);
+
+    box-shadow: 0 20px 45px rgba(90, 52, 65, 0.08);
+}
+
+
+.auth__eyebrow {
+    margin-bottom: 12px;
+
+    color: var(--petal-rouge);
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+
+.auth__title {
+    margin-bottom: 12px;
+
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 38px;
+    font-weight: 400;
+
+    color: var(--text);
+}
+
+
+.auth__description {
+    margin-bottom: 30px;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.auth-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.auth-form__field label {
+    font-size: 13px;
+    font-weight: 600;
+
+    color: var(--text);
+}
+
+
+.auth-form__field input {
+    width: 100%;
+    height: 50px;
+
+    padding: 0 16px;
+
+    border: 1px solid #F0DDE4;
+    border-radius: 15px;
+
+    background-color: #FFF9FB;
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+}
+
+
+.auth-form__field input:focus {
+    border-color: var(--pink-mist);
+    background-color: var(--white);
+}
+
+
+.auth-form__error {
+    margin-top: 4px;
+
+    color: #C94F70;
+
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+.auth-form__button {
+    width: 100%;
+    margin-top: 8px;
+
+    border: none;
+    cursor: pointer;
+}
+
+
+.auth__switch {
+    margin-top: 24px;
+
+    text-align: center;
+
+    color: var(--text-light);
+    font-size: 13px;
+}
+
+
+.auth__switch a {
+    color: var(--petal-rouge);
+    font-weight: 600;
+}
+
+
+.auth__switch a:hover {
+    text-decoration: underline;
+}
+
+
+.header__user {
+    font-size: 13px;
+    font-weight: 500;
+
+    color: var(--text);
+}
+
+
+.header__logout {
+    display: flex;
+}
+
+
+.header__logout button {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+    color: var(--text);
+
+    font-size: 17px;
+
+    cursor: pointer;
+}
+
+
+.header__logout button:hover {
+    background-color: var(--petal-frost);
+}
+
+
+/* PROFILE */
+
+.profile {
+    padding: 70px 0 100px;
+}
+
+
+.profile__container {
+    width: min(650px, 90%);
+    margin: 0 auto;
+}
+
+
+.profile__card {
+    padding: 42px;
+
+    border: 1px solid #F0DDE4;
+    border-radius: 30px;
+
+    background-color: var(--white);
+
+    box-shadow: 0 20px 45px rgba(90, 52, 65, 0.08);
+}
+
+
+.profile__eyebrow {
+    margin-bottom: 12px;
+
+    color: var(--petal-rouge);
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+
+.profile__title {
+    margin-bottom: 12px;
+
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 40px;
+    font-weight: 400;
+
+    color: var(--text);
+}
+
+
+.profile__description {
+    margin-bottom: 30px;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+.profile__info {
+    margin-bottom: 30px;
+
+    border-top: 1px solid #F0DDE4;
+}
+
+
+.profile__row {
+    padding: 18px 0;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    border-bottom: 1px solid #F0DDE4;
+
+    font-size: 14px;
+}
+
+
+.profile__row span {
+    color: var(--text-light);
+}
+
+
+.profile__row strong {
+    color: var(--text);
+}
+
+
+.profile__logout {
+    width: 100%;
+
+    border: none;
+    cursor: pointer;
+}
+
+
+.product-card__favorite--active {
+    background-color: var(--petal-frost);
+    color: var(--petal-rouge);
+}
+
+
+.product-detail__favorite--active {
+    background-color: var(--petal-frost);
+    color: var(--petal-rouge);
+}
+
+/* ORDER HISTORY */
+
+.profile {
+    padding-bottom: 40px;
+}
+
+.order-history {
+    padding: 0 0 110px;
+}
+
+.order-history__container {
+    width: min(1050px, 90%);
+    margin: 0 auto;
+}
+
+.order-history__heading {
+    margin-bottom: 30px;
+}
+
+.order-history__eyebrow {
+    margin-bottom: 10px;
+    color: var(--petal-rouge);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.order-history__heading h2 {
+    margin-bottom: 12px;
+    font: 400 36px Georgia, serif;
+}
+
+.order-history__heading > p:last-child {
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.order-history__grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(280px, 100%), 1fr)
+    );
+    gap: 20px;
+}
+
+.order-history__card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 26px;
+    border: 1px solid #F0DDE4;
+    border-radius: 24px;
+    background: var(--white);
+}
+
+.order-history__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.order-history__top strong {
+    font-size: 19px;
+}
+
+.order-history__top span {
+    color: var(--text-light);
+    font-size: 12px;
+}
+
+.order-history__info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--text-light);
+    font-size: 13px;
+}
+
+.order-history__info strong {
+    color: var(--text);
+}
+
+.order-history__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #F0DDE4;
+}
+
+.order-history__price {
+    color: var(--petal-rouge);
+    font-size: 19px;
+}
+
+.order-history__link {
+    color: var(--petal-rouge);
+    font-size: 13px;
+}
+
+.order-history__link:hover {
+    text-decoration: underline;
+}
+
+.order-history__retry {
+    width: 100%;
+}
+
+.order-history__empty {
+    padding: 45px;
+    border: 1px solid #F0DDE4;
+    border-radius: 24px;
+    background: var(--white);
+    text-align: center;
+}
+
+.order-history__empty p {
+    margin-bottom: 22px;
+    color: var(--text-light);
+}

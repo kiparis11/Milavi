@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Корзина — Milavi
+{% endblock %}
+
+
+{% block content %}
+
+<section class="cart">
+
+    <div class="cart__container">
+
+        <div class="cart__header">
+
+            <p class="cart__eyebrow">
+                ВАШ ЗАКАЗ ♡
+            </p>
+
+            <h1 class="cart__title">
+                Корзина
+            </h1>
+
+        </div>
+
+
+        {% if cart_items %}
+
+            <div class="cart__items">
+
+                {% for item in cart_items %}
+
+                    <article class="cart-item">
+
+                        <div class="cart-item__image">
+
+                            {% if item.product.image %}
+                                <img
+                                    src="{{ item.product.image.url }}"
+                                    alt="{{ item.product.name }}"
+                                >
+                            {% endif %}
+
+                        </div>
+
+
+                        <div class="cart-item__content">
+
+                            <p class="cart-item__category">
+                                {{ item.product.category.name }}
+                            </p>
+
+                            <h2 class="cart-item__name">
+                                {{ item.product.name }}
+                            </h2>
+
+
+                            <div class="cart-item__options">
+
+                                {% if item.size %}
+                                    <span>
+                                        Размер: {{ item.size.size }}
+                                    </span>
+                                {% endif %}
+
+
+                                {% if item.temperature %}
+                                    <span>
+                                        Температура:
+                                        {{ item.get_temperature_display }}
+                                    </span>
+                                {% endif %}
+
+
+                                {% if item.addons.all %}
+                                    <div>
+                                        Добавки:
+
+                                        {% for addon in item.addons.all %}
+                                            <span>
+                                                {{ addon.name }}
+                                                {% if not forloop.last %}, {% endif %}
+                                            </span>
+                                        {% endfor %}
+
+                                    </div>
+                                {% endif %}
+
+                            </div>
+
+
+                            <div class="cart-item__actions">
+
+                                <div class="cart-item__quantity">
+
+                                    <form
+                                        method="post"
+                                        action="{% url 'change_cart_quantity' item.id 'decrease' %}"
+                                    >
+                                        {% csrf_token %}
+
+                                        <button type="submit" class="cart-item__quantity-button">
+                                            −
+                                        </button>
+                                    </form>
+
+
+                                    <span>
+                                        {{ item.quantity }}
+                                    </span>
+
+
+                                    <form
+                                        method="post"
+                                        action="{% url 'change_cart_quantity' item.id 'increase' %}"
+                                    >
+                                        {% csrf_token %}
+
+                                        <button type="submit" class="cart-item__quantity-button">
+                                            +
+                                        </button>
+                                    </form>
+
+                                </div>
+
+
+                                <form
+                                    method="post"
+                                    action="{% url 'remove_from_cart' item.id %}"
+                                >
+                                    {% csrf_token %}
+
+                                    <button
+                                        type="submit"
+                                        class="cart-item__remove"
+                                    >
+                                        Удалить
+                                    </button>
+                                </form>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="cart-item__price">
+                            {{ item.total_price|floatformat:0 }} сум
+                        </div>
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+
+            <div class="cart__summary">
+
+                <span>
+                    Итого
+                </span>
+
+                <strong>
+                    {{ cart_total|floatformat:0 }} сум
+                </strong>
+
+            </div>
+
+            <div class="cart__footer">
+
+                <a
+                    href="{% url 'catalog' %}"
+                    class="button button--secondary"
+                >
+                    ← Продолжить покупки
+                </a>
+
+                <a
+                    href="{% url 'checkout' %}"
+                    class="button button--primary"
+                >
+                    Оформить заказ →
+                </a>
+
+            </div>
+
+        {% else %}
+
+            <div class="cart__empty">
+
+                <p>
+                    В корзине пока ничего нет ♡
+                </p>
+
+                <a
+                    href="{% url 'catalog' %}"
+                    class="button button--primary"
+                >
+                    Перейти в меню
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

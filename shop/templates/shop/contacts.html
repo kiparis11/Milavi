@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}Контакты — Milavi{% endblock %}
+
+{% block content %}
+
+<section class="info-page">
+
+    <div class="info-page__container">
+
+        <p class="info-page__eyebrow">
+            ВСЕГДА РАДЫ ВАМ ♡
+        </p>
+
+        <h1 class="info-page__title">
+            Давайте будем на связи
+        </h1>
+
+        <p class="info-page__lead">
+            Здесь вы найдёте информацию,
+            которая поможет сориентироваться
+            на нашем сайте.
+        </p>
+
+        <div class="info-page__grid info-page__grid--two">
+
+            <article class="info-card">
+
+                <span class="info-card__symbol">✉</span>
+
+                <h2>Связаться с нами</h2>
+
+                {% if contact_email %}
+
+                    <p>Напишите нам на почту:</p>
+
+                    <a
+                        href="mailto:{{ contact_email }}"
+                        class="info-card__link"
+                    >
+                        {{ contact_email }}
+                    </a>
+
+                {% else %}
+
+                    <p>
+                        Контактная почта Milavi
+                        пока не указана.
+                    </p>
+
+                {% endif %}
+
+            </article>
+
+            <article class="info-card">
+
+                <span class="info-card__symbol">♡</span>
+
+                <h2>Ваши заказы</h2>
+
+                <p>
+                    Статус заказа и подробности
+                    покупки доступны в личном
+                    кабинете.
+                </p>
+
+                {% if user.is_authenticated %}
+
+                    <a
+                        href="{% url 'profile' %}"
+                        class="info-card__link"
+                    >
+                        Перейти в профиль →
+                    </a>
+
+                {% else %}
+
+                    <a
+                        href="{% url 'login' %}"
+                        class="info-card__link"
+                    >
+                        Войти в аккаунт →
+                    </a>
+
+                {% endif %}
+
+            </article>
+
+        </div>
+
+        <div class="info-page__footer">
+
+            <p>
+                А если хочется чего-нибудь
+                вкусного — загляните в наше меню.
+            </p>
+
+            <a
+                href="{% url 'catalog' %}"
+                class="button button--primary"
+            >
+                Смотреть меню →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

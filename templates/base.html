@@ -1,0 +1,177 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Milavi{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/01-base-header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/02-home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/03-catalog-product.css' %}">
+    <link rel="stylesheet" href="{% static 'css/04-search-catalog.css' %}">
+    <link rel="stylesheet" href="{% static 'css/05-auth-profile-favorites.css' %}">
+    <link rel="stylesheet" href="{% static 'css/06-cart.css' %}">
+    <link rel="stylesheet" href="{% static 'css/07-info-pages.css' %}">
+    <link rel="stylesheet" href="{% static 'css/08-mobile.css' %}">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header__container">
+
+        <a href="{% url 'home' %}" class="header__logo" aria-label="Milavi">
+            <img
+                src="{% static 'images/milavi-logo-header.png' %}"
+                alt="Milavi Coffee & Bakery"
+                class="header__logo-image"
+            >
+        </a>
+
+        <details class="header__mobile-menu">
+            <summary aria-label="Открыть меню">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16"/>
+                </svg>
+                <span class="header__menu-label">Меню</span>
+            </summary>
+
+            <nav class="header__mobile-links" aria-label="Мобильная навигация">
+                <a href="{% url 'catalog' %}">Меню</a>
+                <a href="{% url 'about' %}">О нас</a>
+                <a href="{% url 'delivery' %}">Доставка</a>
+                <a href="{% url 'contacts' %}">Контакты</a>
+            </nav>
+        </details>
+
+        <nav class="header__nav">
+            <a href="{% url 'catalog' %}">Меню</a>
+            <a href="{% url 'about' %}">О нас</a>
+            <a href="{% url 'delivery' %}">Доставка</a>
+            <a href="{% url 'contacts' %}">Контакты</a>
+        </nav>
+
+        <div class="header__actions">
+
+            <form
+                action="{% url 'catalog' %}"
+                method="get"
+                class="header-search"
+            >
+                <input
+                    type="text"
+                    name="search"
+                    class="header-search__input"
+                    placeholder="Поиск..."
+                    value="{{ request.GET.search }}"
+                >
+
+                <button
+                    type="submit"
+                    class="header-search__button"
+                    aria-label="Поиск"
+                >
+                    ⌕
+                </button>
+            </form>
+
+            <a
+                href="{% url 'favorite_list' %}"
+                class="header__icon-link"
+                aria-label="Избранное"
+                title="Избранное"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>
+                </svg>
+            </a>
+
+            <a
+                href="{% url 'cart_detail' %}"
+                class="header__icon-link"
+                aria-label="Корзина, товаров: {{ cart_count }}"
+                title="Корзина"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="9" cy="21" r="1"/>
+                    <circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>
+                </svg>
+
+                {% if cart_count > 0 %}
+                    <span class="header__cart-count">
+                        {% if cart_count > 99 %}
+                            99+
+                        {% else %}
+                            {{ cart_count }}
+                        {% endif %}
+                    </span>
+                {% endif %}
+            </a>
+
+            {% if user.is_authenticated %}
+
+                <a
+                    href="{% url 'profile' %}"
+                    class="header__user header__icon-link header__profile"
+                    title="Мой профиль"
+                >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M5 21v-2a7 7 0 0 1 14 0v2"/>
+                    </svg>
+
+                    <span class="header__username">
+                        {{ user.username }}
+                    </span>
+                </a>
+
+                <form
+                    method="post"
+                    action="{% url 'logout' %}"
+                    class="header__logout"
+                >
+                    {% csrf_token %}
+
+                    <button
+                        type="submit"
+                        aria-label="Выйти"
+                    >
+                        ↪
+                    </button>
+                </form>
+
+            {% else %}
+
+                <a
+                    href="{% url 'login' %}"
+                    class="header__icon-link"
+                    aria-label="Войти"
+                    title="Войти"
+                >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M5 21v-2a7 7 0 0 1 14 0v2"/>
+                    </svg>
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<script src="{% static 'js/slider.js' %}"></script>
+<script src="{% static 'js/product.js' %}"></script>
+
+</body>
+</html>

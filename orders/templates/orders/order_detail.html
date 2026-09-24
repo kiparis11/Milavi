@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Заказ №{{ order.id }} — Milavi
+{% endblock %}
+
+{% block content %}
+
+<section class="order-success">
+
+    <div class="order-success__card">
+
+        <a
+            href="{% url 'profile' %}"
+            class="checkout__back"
+        >
+            ← Вернуться в профиль
+        </a>
+
+        <p class="order-success__eyebrow">
+            ИСТОРИЯ ПОКУПОК ♡
+        </p>
+
+        <h1>
+            Заказ №{{ order.id }}
+        </h1>
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="order-cancel__message">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+        <p class="order-success__description">
+            Оформлен {{ order.created_at|date:"d.m.Y в H:i" }}
+        </p>
+
+        <div class="order-success__details">
+
+            <div class="order-success__detail">
+                <span>Статус заказа</span>
+                <strong>{{ order.get_status_display }}</strong>
+            </div>
+
+            <div class="order-success__detail">
+                <span>Способ оплаты</span>
+                <strong>
+                    {{ order.get_payment_method_display }}
+                </strong>
+            </div>
+
+            <div class="order-success__detail">
+                <span>Статус оплаты</span>
+                <strong>
+                    {{ order.get_payment_status_display }}
+                </strong>
+            </div>
+
+            <div class="order-success__detail">
+                <span>Получатель</span>
+                <strong>{{ order.full_name }}</strong>
+            </div>
+
+            <div class="order-success__detail">
+                <span>Адрес</span>
+                <strong>{{ order.address }}</strong>
+            </div>
+
+        </div>
+
+        <h2 class="order-success__items-title">
+            Состав заказа
+        </h2>
+
+        <div class="order-success__items">
+
+    {% for item in order.items.all %}
+
+        <div class="order-success__item">
+
+            <div>
+                <strong>
+                    {{ item.product_name }}
+                </strong>
+
+                <p>
+                    Количество: {{ item.quantity }}
+                </p>
+
+                {% if item.size %}
+                    <p>Размер: {{ item.size }}</p>
+                {% endif %}
+
+                {% if item.temperature %}
+                    <p>{{ item.temperature }}</p>
+                {% endif %}
+
+                {% for addon in item.addons %}
+                    <p>+ {{ addon }}</p>
+                {% endfor %}
+
+
+                {% if order.status == 'delivered' and item.product_id %}
+
+                    <div class="order-review">
+
+                        {% if item.review %}
+
+                            <a
+                                href="{% url 'product_detail' item.product.slug %}#review-{{ item.review.id }}"
+                                class="order-review__done"
+                            >
+                                ♡ Посмотреть свой отзыв →
+                            </a>
+
+                        {% elif order.payment_status == 'paid' %}
+
+                            <a
+                                href="{% url 'create_purchase_review' item.id %}"
+                                class="order-review__button"
+                            >
+                                Оставить отзыв ♡
+                            </a>
+
+                        {% else %}
+
+                            <span class="order-review__waiting">
+                                Отзыв будет доступен после подтверждения оплаты
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+            <strong>
+                {{ item.total_price|floatformat:0 }} сум
+            </strong>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+
+        <div class="order-success__total">
+            <span>Итого</span>
+
+            <strong>
+                {{ order.total_price|floatformat:0 }} сум
+            </strong>
+        </div>
+
+        {% if order.status == 'new' %}
+
+            <form
+                method="post"
+                action="{% url 'cancel_order' order.id %}"
+                class="order-cancel"
+                onsubmit="return confirm('Вы действительно хотите отменить заказ?');"
+            >
+                {% csrf_token %}
+
+                <button type="submit" class="order-cancel__button">
+                    Отменить заказ
+                </button>
+
+            </form>
+
+        {% endif %}
+
+        {% if order.payment_method == 'demo_card' and order.payment_status != 'paid' and order.status != 'cancelled' %}
+
+            <a
+                href="{% url 'demo_payment' order.id %}"
+                class="button button--primary"
+            >
+                Повторить оплату →
+            </a>
+
+        {% else %}
+
+            <a
+                href="{% url 'catalog' %}"
+                class="button button--secondary"
+            >
+                Продолжить покупки
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

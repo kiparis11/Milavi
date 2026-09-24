@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}Доставка — Milavi{% endblock %}
+
+{% block content %}
+
+<section class="info-page">
+
+    <div class="info-page__container">
+
+        <p class="info-page__eyebrow">
+            С ЗАБОТОЙ О ВАШЕМ ЗАКАЗЕ ♡
+        </p>
+
+        <h1 class="info-page__title">
+            Доставка и оплата
+        </h1>
+
+        <p class="info-page__lead">
+            Выбирайте любимые напитки и десерты,
+            а мы позаботимся о том, чтобы процесс
+            оформления заказа был простым и удобным.
+        </p>
+
+        <div class="info-page__grid">
+
+            <article class="info-card">
+                <span class="info-card__number">01</span>
+
+                <h2>Выберите любимое</h2>
+
+                <p>
+                    Добавьте товары из меню в корзину.
+                    Для некоторых напитков можно выбрать
+                    размер, температуру и добавки.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <span class="info-card__number">02</span>
+
+                <h2>Оформите заказ</h2>
+
+                <p>
+                    Укажите имя, контактный телефон
+                    и адрес доставки. При необходимости
+                    добавьте комментарий.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <span class="info-card__number">03</span>
+
+                <h2>Следите за статусом</h2>
+
+                <p>
+                    В личном кабинете вы сможете
+                    посмотреть историю покупок и узнать,
+                    готовится ли ваш заказ или уже
+                    доставляется.
+                </p>
+            </article>
+
+        </div>
+
+        <div class="info-page__notice">
+
+            <h2>Способы оплаты</h2>
+
+            <p>
+                При оформлении заказа можно выбрать
+                оплату картой на сайте или оплату
+                при получении.
+            </p>
+
+            <p class="info-page__small">
+                Онлайн-оплата на текущем этапе работает
+                в тестовом режиме.
+            </p>
+
+        </div>
+
+        <div class="info-page__footer">
+            <p>
+                Уже оформили заказ? Его статус
+                всегда можно посмотреть в профиле.
+            </p>
+
+            {% if user.is_authenticated %}
+
+                <a
+                    href="{% url 'profile' %}"
+                    class="button button--primary"
+                >
+                    Мои заказы →
+                </a>
+
+            {% else %}
+
+                <a
+                    href="{% url 'login' %}"
+                    class="button button--primary"
+                >
+                    Войти в аккаунт →
+                </a>
+
+            {% endif %}
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

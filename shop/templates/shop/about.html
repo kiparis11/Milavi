@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}О нас — Milavi{% endblock %}
+
+{% block content %}
+
+<section class="info-page">
+
+    <div class="info-page__container">
+
+        <p class="info-page__eyebrow">
+            ДОБРО ПОЖАЛОВАТЬ В MILAVI ♡
+        </p>
+
+        <h1 class="info-page__title">
+            Немного красоты в каждом дне
+        </h1>
+
+        <p class="info-page__lead">
+            Milavi — кофейня, в которой хочется
+            ненадолго остановиться, насладиться
+            любимым напитком и найти радость
+            в простых моментах.
+        </p>
+
+        <div class="info-page__grid">
+
+            <article class="info-card">
+                <span class="info-card__symbol">♡</span>
+
+                <h2>Наше настроение</h2>
+
+                <p>
+                    Нежные оттенки, маленькие детали
+                    и уютная атмосфера. Мы любим всё,
+                    что делает обычный день особенным.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <span class="info-card__symbol">✿</span>
+
+                <h2>Наше меню</h2>
+
+                <p>
+                    Кофейные напитки, ароматный чай,
+                    освежающие сочетания и десерты,
+                    которыми хочется поделиться.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <span class="info-card__symbol">☕</span>
+
+                <h2>На ваш вкус</h2>
+
+                <p>
+                    Выбирайте любимый размер,
+                    температуру напитка и добавки,
+                    чтобы каждый заказ был именно
+                    таким, как вам нравится.
+                </p>
+            </article>
+
+        </div>
+
+        <div class="info-page__footer">
+            <p>Ваш маленький момент счастья начинается здесь.</p>
+
+            <a
+                href="{% url 'catalog' %}"
+                class="button button--primary"
+            >
+                Открыть меню →
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

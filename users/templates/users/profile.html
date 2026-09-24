@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Профиль — Milavi
+{% endblock %}
+
+
+{% block content %}
+
+<section class="profile">
+
+    <div class="profile__container">
+
+        <div class="profile__card">
+
+            <p class="profile__eyebrow">
+                ЛИЧНЫЙ КАБИНЕТ ♡
+            </p>
+
+            <h1 class="profile__title">
+                Привет, {{ user.username }}!
+            </h1>
+
+            <p class="profile__description">
+                Здесь будет храниться информация о вашем аккаунте,
+                избранных товарах и заказах.
+            </p>
+
+
+            <div class="profile__info">
+
+                <div class="profile__row">
+                    <span>Имя пользователя</span>
+                    <strong>{{ user.username }}</strong>
+                </div>
+
+                <div class="profile__row">
+                    <span>Email</span>
+                    <strong>{{ user.email }}</strong>
+                </div>
+
+            </div>
+
+
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    class="button button--primary profile__logout"
+                >
+                    Выйти из аккаунта
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="order-history">
+
+    <div class="order-history__container">
+
+        <div class="order-history__heading">
+
+            <p class="order-history__eyebrow">
+                МОИ ПОКУПКИ ♡
+            </p>
+
+            <h2>История заказов</h2>
+
+            <p>
+                Здесь хранятся все ваши заказы Milavi.
+            </p>
+
+        </div>
+
+        {% if orders %}
+
+            <div class="order-history__grid">
+
+                {% for order in orders %}
+
+                    <article class="order-history__card">
+
+                        <div class="order-history__top">
+
+                            <strong>
+                                Заказ №{{ order.id }}
+                            </strong>
+
+                            <span>
+                                {{ order.created_at|date:"d.m.Y" }}
+                            </span>
+
+                        </div>
+
+                        <div class="order-history__info">
+
+                            <p>
+                                Статус:
+                                <strong>
+                                    {{ order.get_status_display }}
+                                </strong>
+                            </p>
+
+                            <p>
+                                Оплата:
+                                <strong>
+                                    {{ order.get_payment_status_display }}
+                                </strong>
+                            </p>
+
+                            <p>
+                                Товарных позиций:
+                                {{ order.items.count }}
+                            </p>
+
+                        </div>
+
+                        <div class="order-history__bottom">
+
+                            <strong class="order-history__price">
+                                {{ order.total_price|floatformat:0 }} сум
+                            </strong>
+
+                            <a
+                                href="{% url 'order_detail' order.id %}"
+                                class="order-history__link"
+                            >
+                                Подробнее →
+                            </a>
+
+                        </div>
+
+                        {% if order.payment_method == 'demo_card' and order.payment_status != 'paid' and order.status != 'cancelled' %}
+
+                            <a
+                                href="{% url 'demo_payment' order.id %}"
+                                class="button button--secondary order-history__retry"
+                            >
+                                Повторить оплату
+                            </a>
+
+                        {% endif %}
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="order-history__empty">
+
+                <p>
+                    Вы пока ничего не заказывали ♡
+                </p>
+
+                <a
+                    href="{% url 'catalog' %}"
+                    class="button button--primary"
+                >
+                    Посмотреть меню
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

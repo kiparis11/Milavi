@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Регистрация — Milavi
+{% endblock %}
+
+
+{% block content %}
+
+<section class="auth">
+
+    <div class="auth__container">
+
+        <div class="auth__card">
+
+            <p class="auth__eyebrow">
+                ДОБРО ПОЖАЛОВАТЬ ♡
+            </p>
+
+            <h1 class="auth__title">
+                Создать аккаунт
+            </h1>
+
+            <p class="auth__description">
+                Зарегистрируйтесь, чтобы пользоваться корзиной,
+                избранным и оставлять отзывы.
+            </p>
+
+
+            <form method="post" class="auth-form">
+
+                {% csrf_token %}
+
+
+                <div class="auth-form__field">
+
+                    <label for="{{ form.username.id_for_label }}">
+                        Имя пользователя
+                    </label>
+
+                    {{ form.username }}
+
+                    {% for error in form.username.errors %}
+                        <p class="auth-form__error">
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="auth-form__field">
+
+                    <label for="{{ form.email.id_for_label }}">
+                        Email
+                    </label>
+
+                    {{ form.email }}
+
+                    {% for error in form.email.errors %}
+                        <p class="auth-form__error">
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="auth-form__field">
+
+                    <label for="{{ form.password1.id_for_label }}">
+                        Пароль
+                    </label>
+
+                    {{ form.password1 }}
+
+                    {% for error in form.password1.errors %}
+                        <p class="auth-form__error">
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="auth-form__field">
+
+                    <label for="{{ form.password2.id_for_label }}">
+                        Повторите пароль
+                    </label>
+
+                    {{ form.password2 }}
+
+                    {% for error in form.password2.errors %}
+                        <p class="auth-form__error">
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+
+                </div>
+
+
+                {% for error in form.non_field_errors %}
+                    <p class="auth-form__error">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+
+
+                <button
+                    type="submit"
+                    class="button button--primary auth-form__button"
+                >
+                    Зарегистрироваться
+                </button>
+
+            </form>
+
+            <p class="auth__switch">
+                Уже есть аккаунт?
+                <a href="{% url 'login' %}">
+                    Войти
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

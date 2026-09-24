@@ -1,0 +1,140 @@
+/* MILAVI — INFORMATION PAGES */
+
+.info-page {
+    padding: 70px 20px 100px;
+    background: var(--background);
+}
+
+.info-page__container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.info-page__eyebrow {
+    margin-bottom: 14px;
+    color: var(--petal-rouge);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.info-page__title {
+    max-width: 760px;
+    margin: 0 0 22px;
+    color: var(--text);
+    font-size: clamp(32px, 5vw, 54px);
+    line-height: 1.2;
+}
+
+.info-page__lead {
+    max-width: 680px;
+    margin-bottom: 45px;
+    color: var(--text-light);
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+.info-page__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.info-page__grid--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.info-card {
+    padding: 35px 30px;
+    background: var(--white);
+    border: 1px solid var(--petal-frost);
+    border-radius: 24px;
+}
+
+.info-card__symbol,
+.info-card__number {
+    display: block;
+    margin-bottom: 22px;
+    color: var(--petal-rouge);
+    font-size: 30px;
+}
+
+.info-card__number {
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.info-card h2 {
+    margin: 0 0 14px;
+    color: var(--text);
+    font-size: 21px;
+}
+
+.info-card p,
+.info-page__notice p {
+    color: var(--text-light);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.info-card__link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--petal-rouge);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.info-card__link:hover {
+    text-decoration: underline;
+}
+
+.info-page__notice {
+    margin-top: 30px;
+    padding: 28px 32px;
+    border-radius: 22px;
+    background: #FBE9F0;
+}
+
+.info-page__notice h2 {
+    margin: 0 0 12px;
+    color: var(--text);
+    font-size: 22px;
+}
+
+.info-page__small {
+    font-size: 12px !important;
+}
+
+.info-page__footer {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.info-page__footer p {
+    margin-bottom: 22px;
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+    .info-page__grid,
+    .info-page__grid--two {
+        grid-template-columns: 1fr;
+    }
+
+    .info-page {
+        padding: 45px 20px 70px;
+    }
+
+    .info-card {
+        padding: 26px;
+    }
+}
+
+.product-card__add {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}

@@ -1,0 +1,332 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Milavi — Coffee & Bakery
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero-slider">
+
+    <!-- СЛАЙД 1 -->
+    <div class="hero-slide hero-slide--active hero-slide--pink">
+
+        <div class="hero-decor hero-decor--strawberry" aria-hidden="true">
+            <span class="hero-decor__flower hero-decor__flower--one">✿</span>
+            <span class="hero-decor__flower hero-decor__flower--two">✿</span>
+            <span class="hero-decor__heart">♡</span>
+            <span class="hero-decor__dots">· · ·</span>
+        </div>
+
+        <div class="hero-slide__container">
+
+            <div class="hero-slide__content">
+                <p class="hero-slide__eyebrow">
+                    НОВИНКА MILAVI ♡
+                </p>
+
+                <h1 class="hero-slide__title">
+                    Кофе, десерты
+                    <span>и немного красоты.</span>
+                </h1>
+
+                <p class="hero-slide__description">
+                    Попробуй наш клубничный кофейный bubble —
+                    нежный, сливочный и немного необычный.
+                </p>
+
+                <a href="{% url 'catalog' %}" class="button button--primary">
+                Смотреть меню →
+                </a>
+            </div>
+
+
+            <div class="hero-slide__visual">
+
+                <div class="hero-slide__shape"></div>
+
+                <img
+                    src="{% static 'images/hero-strawberry.png' %}"
+                    class="hero-slide__image hero-slide__image--strawberry"
+                    alt="Клубничный Coffee Bubble"
+                >
+
+                <span class="hero-sticker hero-sticker--top">
+                    sweet<br>moment ♡
+                </span>
+
+                <span class="hero-sticker hero-sticker--bottom">
+                    made with care
+                </span>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- СЛАЙД 2 -->
+<div class="hero-slide hero-slide--blue">
+
+    <div class="hero-decor hero-decor--desserts" aria-hidden="true">
+        <span class="hero-decor__sparkle hero-decor__sparkle--one">✧</span>
+        <span class="hero-decor__sparkle hero-decor__sparkle--two">✧</span>
+        <span class="hero-decor__heart">♡</span>
+        <span class="hero-decor__dots">· · ·</span>
+    </div>
+
+    <div class="hero-slide__container">
+
+        <div class="hero-slide__content">
+
+            <p class="hero-slide__eyebrow">
+                СЛАДКАЯ ПАУЗА ♡
+            </p>
+
+            <h2 class="hero-slide__title">
+                Десерт к кофе
+                <span>делает день немного лучше.</span>
+            </h2>
+
+            <p class="hero-slide__description">
+                Нежные чизкейки, свежая выпечка
+                и маленькие сладости для уютного перерыва.
+            </p>
+
+            <a
+                href="{% url 'catalog' %}?category=deserty"
+                class="button button--primary"
+            >
+                Выбрать десерт →
+            </a>
+
+        </div>
+
+        <div class="hero-slide__visual">
+
+            <div class="hero-slide__shape"></div>
+
+            <img
+                src="{% static 'images/hero-desserts.png' %}"
+                class="hero-slide__image hero-slide__image--desserts"
+                alt="Чизкейк и круассан Milavi"
+            >
+
+            <span class="hero-sticker hero-sticker--top">
+                sweet<br>pause ✿
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    <!-- СЛАЙД 3 -->
+    <div class="hero-slide hero-slide--beige">
+
+        <div class="hero-decor hero-decor--autumn" aria-hidden="true">
+            <span class="hero-decor__leaf hero-decor__leaf--one"></span>
+            <span class="hero-decor__leaf hero-decor__leaf--two"></span>
+            <span class="hero-decor__sparkle">✧</span>
+            <span class="hero-decor__dots">· · ·</span>
+        </div>
+
+        <div class="hero-slide__container">
+
+            <div class="hero-slide__content">
+                <p class="hero-slide__eyebrow">
+                    СЕЗОННЫЕ НОВИНКИ ♡
+                </p>
+
+                <h2 class="hero-slide__title">
+                    Осенний вкус,
+                    <span>в который легко влюбиться.</span>
+                </h2>
+
+                <p class="hero-slide__description">
+                    Тёплый пряный тыквенный латте,
+                    карамельные ноты и уютное настроение осени.
+                </p>
+
+                <a href="{% url 'catalog' %}?new=1"
+                   class="button button--primary">
+                    Открыть новинки →
+                </a>
+            </div>
+
+
+            <div class="hero-slide__visual">
+
+                <div class="hero-slide__shape"></div>
+
+                <img
+                    src="{% static 'images/hero-pumpkin.png' %}"
+                    class="hero-slide__image hero-slide__image--pumpkin"
+                    alt="Пряный тыквенный латте Milavi"
+                >
+
+                <span class="hero-sticker hero-sticker--bottom">
+                    little joys ♡
+                </span>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- УПРАВЛЕНИЕ -->
+    <div class="hero-slider__controls">
+
+        <button
+            class="hero-slider__arrow hero-slider__arrow--prev"
+            type="button"
+            aria-label="Предыдущий баннер"
+        >
+            ‹
+        </button>
+
+        <div class="hero-slider__dots">
+
+            <button
+                class="hero-slider__dot hero-slider__dot--active"
+                type="button"
+                aria-label="Слайд 1"
+            ></button>
+
+            <button
+                class="hero-slider__dot"
+                type="button"
+                aria-label="Слайд 2"
+            ></button>
+
+            <button
+                class="hero-slider__dot"
+                type="button"
+                aria-label="Слайд 3"
+            ></button>
+
+        </div>
+
+        <button
+            class="hero-slider__arrow hero-slider__arrow--next"
+            type="button"
+            aria-label="Следующий баннер"
+        >
+            ›
+        </button>
+
+    </div>
+
+</section>
+
+<section class="featured-products">
+    <div class="featured-products__container">
+
+        <div class="featured-products__header">
+            <div>
+                <p class="featured-products__eyebrow">ВЫБОР MILAVI</p>
+                <h2 class="featured-products__title">Особенно сегодня</h2>
+            </div>
+
+            <a href="{% url 'catalog' %}" class="featured-products__all">
+            Смотреть всё →
+            </a>
+        </div>
+
+
+        <div class="featured-products__grid">
+
+            {% for product in featured_products %}
+
+                <article class="product-card">
+
+                    <div class="product-card__image">
+
+                        {% if product.image %}
+                            <a href="{% url 'product_detail' product.slug %}">
+                                <img
+                                    src="{{ product.image.url }}"
+                                    alt="{{ product.name }}">
+                            </a>
+                        {% endif %}
+
+                        <form
+                            method="post"
+                            action="{% url 'toggle_favorite' product.id %}"
+                        >
+                            {% csrf_token %}
+
+                            <input
+                                type="hidden"
+                                name="next"
+                                value="{{ request.get_full_path }}"
+                            >
+
+                            <button
+                                class="product-card__favorite
+                                {% if product.id in favorite_product_ids %}product-card__favorite--active{% endif %}"
+                                type="submit"
+                                aria-label="Избранное"
+                            >
+                                {% if product.id in favorite_product_ids %}
+                                    ♥
+                                {% else %}
+                                    ♡
+                                {% endif %}
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                    <div class="product-card__content">
+
+                        <p class="product-card__category">
+                            {{ product.category.name }}
+                        </p>
+
+                        <h3 class="product-card__name">
+                            <a href="{% url 'product_detail' product.slug %}">
+                                {{ product.name }}
+                            </a>
+                        </h3>
+
+                        <div class="product-card__bottom">
+
+                            <span class="product-card__price">
+                                {{ product.price|floatformat:0 }} сум
+                            </span>
+
+                            <a
+                                href="{% url 'product_detail' product.slug %}"
+                                class="product-card__add"
+                                aria-label="Выбрать параметры товара"
+                                title="Выбрать параметры товара"
+                            >
+                                +
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            {% empty %}
+
+                <p>Здесь скоро появятся особенные позиции Milavi.</p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

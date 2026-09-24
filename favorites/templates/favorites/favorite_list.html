@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Избранное — Milavi
+{% endblock %}
+
+
+{% block content %}
+
+<section class="catalog">
+
+    <div class="catalog__container">
+
+        <div class="catalog__header">
+
+            <p class="catalog__eyebrow">
+                MILAVI ♡
+            </p>
+
+            <h1 class="catalog__title">
+                Избранное
+            </h1>
+
+            <p class="catalog__description">
+                Товары, которые вы сохранили.
+            </p>
+
+        </div>
+
+
+        <div class="catalog__grid">
+
+            {% for favorite in favorites %}
+
+                {% with product=favorite.product %}
+
+                    <article class="product-card">
+
+                        <div class="product-card__image">
+
+                            {% if product.image %}
+
+                                <a href="{% url 'product_detail' product.slug %}">
+
+                                    <img
+                                        src="{{ product.image.url }}"
+                                        alt="{{ product.name }}"
+                                    >
+
+                                </a>
+
+                            {% endif %}
+
+
+                            <form
+                                method="post"
+                                action="{% url 'toggle_favorite' product.id %}"
+                            >
+                                {% csrf_token %}
+
+                                <input
+                                    type="hidden"
+                                    name="next"
+                                    value="{{ request.get_full_path }}"
+                                >
+
+                                <button
+                                    type="submit"
+                                    class="product-card__favorite product-card__favorite--active"
+                                    aria-label="Удалить из избранного"
+                                >
+                                    ♥
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                        <div class="product-card__content">
+
+                            <p class="product-card__category">
+                                {{ product.category.name }}
+                            </p>
+
+                            <h2 class="product-card__name">
+
+                                <a href="{% url 'product_detail' product.slug %}">
+                                    {{ product.name }}
+                                </a>
+
+                            </h2>
+
+                            <div class="product-card__bottom">
+
+                                <span class="product-card__price">
+                                    {{ product.price|floatformat:0 }} сум
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                {% endwith %}
+
+            {% empty %}
+
+                <div class="catalog__empty">
+                    В избранном пока ничего нет ♡
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

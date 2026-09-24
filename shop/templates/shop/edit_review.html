@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Редактировать отзыв — Milavi
+{% endblock %}
+
+
+{% block content %}
+
+<section class="review-edit">
+
+    <div class="review-edit__container">
+
+        <a
+            href="{% url 'product_detail' review.product.slug %}"
+            class="review-edit__back"
+        >
+            ← Вернуться к товару
+        </a>
+
+
+        <div class="review-edit__card">
+
+            <p class="review-edit__eyebrow">
+                ВАШ ОТЗЫВ ♡
+            </p>
+
+            <h1 class="review-edit__title">
+                Редактировать отзыв
+            </h1>
+
+            <p class="review-edit__product">
+                {{ review.product.name }}
+            </p>
+
+
+            <form
+                method="post"
+                class="review-form"
+            >
+
+                {% csrf_token %}
+
+
+                <div class="review-form__field">
+
+                    <label for="{{ form.rating.id_for_label }}">
+                        Оценка
+                    </label>
+
+                    {{ form.rating }}
+
+                </div>
+
+
+                <div class="review-form__field">
+
+                    <label for="{{ form.text.id_for_label }}">
+                        Ваш отзыв
+                    </label>
+
+                    {{ form.text }}
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="button button--primary review-form__button"
+                >
+                    Сохранить изменения
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

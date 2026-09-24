@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Отзыв о покупке — Milavi
+{% endblock %}
+
+{% block content %}
+
+<section class="purchase-review">
+    <div class="purchase-review__card">
+
+        <p class="purchase-review__eyebrow">
+            ЗАКАЗ №{{ item.order_id }}
+        </p>
+
+        <h1>Поделитесь впечатлениями ♡</h1>
+
+        <p class="purchase-review__subtitle">
+            Как вам {{ item.product_name }}?
+        </p>
+
+        <div class="purchase-review__product">
+
+            {% if item.product.image %}
+                <img
+                    src="{{ item.product.image.url }}"
+                    alt="{{ item.product_name }}"
+                >
+            {% endif %}
+
+            <div>
+                <h2>{{ item.product_name }}</h2>
+
+                {% if item.size %}
+                    <p>Размер: {{ item.size }}</p>
+                {% endif %}
+
+                {% if item.temperature %}
+                    <p>{{ item.temperature }}</p>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <form method="post" class="purchase-review__form">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="purchase-review__errors">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <label for="{{ form.rating.id_for_label }}">
+                Ваша оценка
+            </label>
+
+            {{ form.rating }}
+            {{ form.rating.errors }}
+
+            <label for="{{ form.text.id_for_label }}">
+                Ваш отзыв
+            </label>
+
+            {{ form.text }}
+            {{ form.text.errors }}
+
+            <button type="submit" class="purchase-review__submit">
+                Опубликовать отзыв
+            </button>
+        </form>
+
+        <a
+            href="{% url 'order_detail' item.order_id %}"
+            class="purchase-review__back"
+        >
+            Вернуться к заказу
+        </a>
+
+    </div>
+</section>
+
+{% endblock %}

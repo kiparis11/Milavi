@@ -1,0 +1,389 @@
+
+{% extends 'base.html' %}
+{% load l10n %}
+
+{% block title %}
+    {{ product.name }} — Milavi
+{% endblock %}
+
+{% block content %}
+
+<section class="product-detail">
+    <div class="product-detail__container">
+
+        <a href="{% url 'catalog' %}" class="product-detail__back">
+            ← Вернуться в меню
+        </a>
+
+        <div class="product-detail__grid">
+
+            <div class="product-detail__visual">
+                {% if product.image %}
+                    <img
+                        src="{{ product.image.url }}"
+                        alt="{{ product.name }}"
+                        class="product-detail__image"
+                    >
+                {% endif %}
+            </div>
+
+            <div class="product-detail__content">
+
+                <p class="product-detail__category">
+                    {{ product.category.name }}
+                </p>
+
+                <div class="product-detail__heading">
+
+                    <h1 class="product-detail__title">
+                        {{ product.name }}
+                    </h1>
+
+                    <form
+                        method="post"
+                        action="{% url 'toggle_favorite' product.id %}"
+                    >
+                        {% csrf_token %}
+
+                        <input
+                            type="hidden"
+                            name="next"
+                            value="{{ request.get_full_path }}"
+                        >
+
+                        <button
+                            type="submit"
+                            class="product-detail__favorite {% if product.id in favorite_product_ids %}product-detail__favorite--active{% endif %}"
+                            aria-label="Избранное"
+                        >
+                            {% if product.id in favorite_product_ids %}
+                                ♥
+                            {% else %}
+                                ♡
+                            {% endif %}
+                        </button>
+                    </form>
+
+                </div>
+
+                <p class="product-detail__description">
+                    {{ product.description }}
+                </p>
+
+                <form
+                    method="post"
+                    action="{% url 'add_to_cart' product.id %}"
+                    class="product-detail__form"
+                >
+                    {% csrf_token %}
+
+                    <input
+                        type="hidden"
+                        name="size"
+                        id="selected-size"
+                        value=""
+                    >
+
+                    <input
+                        type="hidden"
+                        name="temperature"
+                        id="selected-temperature"
+                        value="hot"
+                    >
+
+                    {% if product.has_sizes %}
+
+                        <div class="product-options">
+
+                            <p class="product-options__label">
+                                Размер
+                            </p>
+
+                            <div class="product-options__sizes">
+
+                                {% for size in product.sizes.all %}
+
+                                    <button
+                                        type="button"
+                                        class="product-size {% if forloop.first %}product-size--active{% endif %}"
+                                        data-extra="{{ size.extra_price|unlocalize }}"
+                                        data-size-id="{{ size.id }}"
+                                    >
+                                        {{ size.size }}
+                                    </button>
+
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+
+                    {% endif %}
+
+                    {% if product.has_temperature %}
+
+                        <div class="product-options">
+
+                            <p class="product-options__label">
+                                Температура
+                            </p>
+
+                            <div class="product-options__temperatures">
+
+                                <button
+                                    type="button"
+                                    class="product-temperature product-temperature--active"
+                                    data-temperature="hot"
+                                >
+                                    Горячий
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="product-temperature"
+                                    data-temperature="cold"
+                                >
+                                    Холодный
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    {% endif %}
+
+                    {% if product.has_addons %}
+
+                        <div class="product-options">
+
+                            <p class="product-options__label">
+                                Добавки
+                            </p>
+
+                            <div class="product-options__addons">
+
+                                {% for addon in product.addons.all %}
+
+                                    {% if addon.is_available %}
+
+                                        <label class="product-addon">
+
+                                            <input
+                                                type="checkbox"
+                                                class="product-addon__input"
+                                                name="addons"
+                                                value="{{ addon.id }}"
+                                                data-extra="{{ addon.extra_price|unlocalize }}"
+                                            >
+
+                                            <span class="product-addon__check"></span>
+
+                                            <span class="product-addon__name">
+                                                {{ addon.name }}
+                                            </span>
+
+                                            <span class="product-addon__price">
+                                                +{{ addon.extra_price|floatformat:0 }} сум
+                                            </span>
+
+                                        </label>
+
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+
+                    {% endif %}
+
+                    <div
+                        class="product-detail__price"
+                        id="product-price"
+                        data-base-price="{{ product.price|unlocalize }}"
+                    >
+                        {{ product.price|floatformat:0 }} сум
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="product-detail__cart button button--primary"
+                    >
+                        Добавить в корзину
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="reviews" id="reviews">
+
+    <div class="reviews__container">
+
+        <div class="reviews__header">
+
+            <p class="reviews__eyebrow">
+                МНЕНИЯ ГОСТЕЙ ♡
+            </p>
+
+            <h2 class="reviews__title">
+                Отзывы
+            </h2>
+
+        </div>
+
+        <div class="reviews__layout">
+
+            <!-- Список отзывов -->
+
+            <div class="reviews__list">
+
+                {% if reviews %}
+
+                    {% for review in reviews %}
+
+                        <article
+                            class="review"
+                            id="review-{{ review.id }}"
+                        >
+
+                            <div class="review__top">
+
+                                <strong class="review__author">
+                                    {{ review.user.username }}
+                                </strong>
+
+                                <span class="review__rating">
+
+                                    {% if review.rating == 1 %}
+                                        ★☆☆☆☆
+                                    {% elif review.rating == 2 %}
+                                        ★★☆☆☆
+                                    {% elif review.rating == 3 %}
+                                        ★★★☆☆
+                                    {% elif review.rating == 4 %}
+                                        ★★★★☆
+                                    {% elif review.rating == 5 %}
+                                        ★★★★★
+                                    {% endif %}
+
+                                </span>
+
+                            </div>
+
+                            <p class="review__text">
+                                {{ review.text }}
+                            </p>
+
+                            <time class="review__date">
+                                {{ review.created_at|date:"d.m.Y" }}
+                            </time>
+
+                            {% if user.is_authenticated and review.user == user %}
+
+                                <div class="reviews__actions">
+
+                                    <a
+                                        href="{% url 'edit_review' review.id %}"
+                                        class="reviews__edit"
+                                    >
+                                        Редактировать
+                                    </a>
+
+                                    <form
+                                        method="post"
+                                        action="{% url 'delete_review' review.id %}"
+                                    >
+                                        {% csrf_token %}
+
+                                        <button
+                                            type="submit"
+                                            class="reviews__delete"
+                                        >
+                                            Удалить
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
+                            {% endif %}
+
+                        </article>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="reviews__empty">
+                        Пока отзывов нет ♡
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- Информация о публикации отзывов -->
+
+            <div class="reviews__form-wrapper">
+
+                <div class="reviews__login">
+
+                    {% if user.is_authenticated %}
+
+                        <h3 class="review-form__title">
+                            Поделитесь впечатлениями ♡
+                        </h3>
+
+                        <p>
+                            После получения заказа вы сможете
+                            оставить отзыв о каждом приобретённом
+                            товаре в истории покупок.
+                        </p>
+
+                        <a
+                            href="{% url 'profile' %}"
+                            class="button button--secondary"
+                        >
+                            Мои заказы →
+                        </a>
+
+                    {% else %}
+
+                        <h3 class="review-form__title">
+                            Ваше мнение важно для нас ♡
+                        </h3>
+
+                        <p>
+                            Войдите в аккаунт, чтобы просматривать
+                            покупки и оставлять отзывы после доставки.
+                        </p>
+
+                        <a
+                            href="{% url 'login' %}"
+                            class="button button--secondary"
+                        >
+                            Войти
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

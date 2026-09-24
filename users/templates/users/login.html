@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Вход — Milavi
+{% endblock %}
+
+
+{% block content %}
+
+<section class="auth">
+
+    <div class="auth__container">
+
+        <div class="auth__card">
+
+            <p class="auth__eyebrow">
+                С ВОЗВРАЩЕНИЕМ ♡
+            </p>
+
+            <h1 class="auth__title">
+                Войти в аккаунт
+            </h1>
+
+            <p class="auth__description">
+                Войдите, чтобы пользоваться корзиной,
+                избранным и оставлять отзывы.
+            </p>
+
+
+            <form method="post" class="auth-form">
+
+                {% csrf_token %}
+
+
+                <div class="auth-form__field">
+
+                    <label for="{{ form.username.id_for_label }}">
+                        Имя пользователя
+                    </label>
+
+                    {{ form.username }}
+
+                </div>
+
+
+                <div class="auth-form__field">
+
+                    <label for="{{ form.password.id_for_label }}">
+                        Пароль
+                    </label>
+
+                    {{ form.password }}
+
+                </div>
+
+
+                {% for error in form.non_field_errors %}
+                    <p class="auth-form__error">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+
+
+                <button
+                    type="submit"
+                    class="button button--primary auth-form__button"
+                >
+                    Войти
+                </button>
+
+            </form>
+
+
+            <p class="auth__switch">
+                Нет аккаунта?
+                <a href="{% url 'register' %}">
+                    Зарегистрироваться
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
